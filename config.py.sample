@@ -1,0 +1,10 @@
+bb_url = 'https://bitbucket.example.org'
+my_user_name = 'janedoe'
+
+project = 'awesome'
+repo = 'foobar'
+
+# you can replace True with False to ignore SSL verification
+# or assign `verify` to a path to a certificate to use for connection
+# (a *.cer file)
+verify = True
