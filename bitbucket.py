@@ -46,12 +46,15 @@ def get_prs_url(project: str, repo: str) -> str:
 
 
 def download_prs(project: str, repo: str):
-    prs_url = get_prs_url(project, repo)
+    return download(get_prs_url(project, repo))
+
+
+def download(url: str):
     result = None
     while True:
         try:
             init_session()
-            r = rest_session.get(prs_url)
+            r = rest_session.get(url)
             if r.status_code != 200:
                 print(r)
                 print("Download failed for repo ", repo)
@@ -69,7 +72,7 @@ def download_prs(project: str, repo: str):
                 break
             else:
                 if BB_DEBUG:
-                    print("url: ", prs_url)
+                    print("url: ", url)
                 print("Request successful")
                 result = r.json()
                 break
