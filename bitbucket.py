@@ -49,6 +49,23 @@ def download_prs(project: str, repo: str):
     return download(get_prs_url(project, repo))
 
 
+def get_pr_url(project: str, repo: str, pr_id: int) -> str:
+    return '{0}/rest/api/1.0/projects/{1}/repos/{2}/pull-requests/{3}' \
+            .format(config.bb_url, project, repo, pr_id)
+
+
+def download_pr(project: str, repo: str, pr_id: int):
+    return download(get_pr_url(project, repo, pr_id))
+
+
+def get_pr_all_url(project: str, repo: str, pr_id: int) -> str:
+    return get_pr_url(project, repo, pr_id) + '/activities'
+
+
+def download_pr_all(project: str, repo: str, pr_id: int) -> str:
+    return download(get_pr_all_url(project, repo, pr_id))
+
+
 def download(url: str):
     result = None
     while True:
