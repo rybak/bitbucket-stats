@@ -37,7 +37,7 @@ def pretty_print(json_obj):
 
 rest_session = requests.Session()
 auth = None
-BB_DEBUG = True
+BB_DEBUG = False
 NETWORK_ERROR_WAIT_DELAY = 10  # ten seconds
 
 
@@ -90,7 +90,7 @@ def download(url: str):
             else:
                 if BB_DEBUG:
                     print("url: ", url)
-                print("Request successful")
+                    print("Request successful")
                 result = r.json()
                 break
         except requests.exceptions.ConnectionError as ce:
